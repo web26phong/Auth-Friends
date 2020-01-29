@@ -1,12 +1,11 @@
-import axios from "axios";
+import {axiosWithAuth} from "../utils/axiosWithAuth";
 
 export const getFriends = () => dispatch => {
     dispatch({type: "GET_FRIENDS_START"})
-    axios
-    .get(``)
+    axiosWithAuth()
+    .get(`/friends`)
     .then(res => {
-        console.log(res)
-        dispatch({type: "GET_FRIENDS_SUCCESS", payload: res.data.results})
+        dispatch({type: "GET_FRIENDS_SUCCESS", payload: res.data})
     })
     .catch(err => {
         dispatch({type: "GET_FRIENDS_FAILURE"})

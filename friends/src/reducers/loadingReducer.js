@@ -16,7 +16,7 @@ export const loadingReducer = (state = initialLoadingState, action) => {
             return {
                 ...state,
                 isLoading: false,
-                pokemonlist: action.payload
+                friendsList: action.payload
             };
         case "GET_FRIENDS_FAILURE":
             return {
