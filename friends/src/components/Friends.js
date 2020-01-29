@@ -31,14 +31,18 @@ const Friends = (props)=> {
         setEmail(e.target.value);
     }
 
-    const handleSubmit = e => {
+    const handleSubmit = async e => {
         e.preventDefault();
         const id = friendsList.length+1;
-        const friend = {id, name, age, email}
-        addFriend(friend);
-        dispatch(getFriends());
+        const friend = {id, name, age, email};
+
+        //we tell dispatch to wait for addFriend because
+        //addFriend makes an axios post and waits for data to set payload
+        //addFriend returns an object with a type property
+        dispatch(await addFriend(friend)); 
+        
     }
-    
+
     return (
         <div>
             <div className="form">
@@ -48,18 +52,19 @@ const Friends = (props)=> {
                 <button onClick={handleSubmit}>Add Friend</button>
             </div>
             {error !== "" && (
-                <div>ERROR! Please try again later...</div>
+                <div>{error}</div>
             )}
             {isLoading && (
-                <Loader
-                type="Puff"
-                color="#00BFFF"
-                height={100}
-                width={100}
-                timeout={10000} //10 secs
-              />
-            )}
-            {!isLoading && friendsList &&(<div className="friendsContainer">
+                    <Loader
+                    type="Puff"
+                    color="#00BFFF"
+                    height={100}
+                    width={100}
+                    timeout={10000} //10 secs
+                    />
+                )
+            }
+            {!isLoading && friendsList && error === "" &&(<div className="friendsContainer">
                 {friendsList.map((friend, index) => (
                     <div key={index} className="eachFriend">
                         <p>Name: {friend.name}</p>

@@ -15,6 +15,8 @@ code {
 .form{
   border-bottom: solid black 1px;
   padding: 1%;
+  border: solid black 1px;
+  width: 100%;
 }
 
 .eachFriend {
@@ -30,7 +32,7 @@ code {
 }
 
 .nav{
-  width: 50%;
+  width: 25%;
   display: flex;
   justify-content: space-evenly;
   margin: 1%;

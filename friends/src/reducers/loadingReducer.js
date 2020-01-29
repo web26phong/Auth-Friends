@@ -22,8 +22,14 @@ export const loadingReducer = (state = initialLoadingState, action) => {
             return {
                 ...state,
                 isLoading: false,
-                error: "OOPS! SOMETHING WENT WRONG. TRY AGAIN LATER"
+                error: "ERROR. Unable to get friends list! Try again later..."
             };
+        case "GET_FRIENDS":
+            return {
+                ...state, 
+                isLoading: false,
+                friendsList: action.payload
+            }
         default:
             return state;
     }
