@@ -4,6 +4,7 @@ import Axios from "axios";
 const Login = (props) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [message, setMessage] = useState("");
 
     const handleUserChanges = e => {
         setUsername(e.target.value);
@@ -20,9 +21,11 @@ const Login = (props) => {
         .then(res=> {
             localStorage.setItem("token", res.data.payload);
             props.history.push("/friends")
+            setMessage("")
         })
         .catch(err=>{
             console.log(err, "failed to login")
+            setMessage("Failed to login. Please try again.")
         })
     }
 
@@ -31,6 +34,8 @@ const Login = (props) => {
             <input type="text" onChange={handleUserChanges} value={username} placeholder="username"/>
             <input type="password" onChange={handlePwChanges} value={password} placeholder="password" />
             <button onClick={handleSubmit}>Login</button>
+            {message !== "" && (<div>{message}</div>)}
+            
         </div>
     )
 }
