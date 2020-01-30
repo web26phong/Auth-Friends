@@ -1,0 +1,39 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.form{
+  border-bottom: solid black 1px;
+  padding: 1%;
+  border: solid black 1px;
+  width: 100%;
+}
+
+.eachFriend {
+  border-bottom: solid black 1px;
+  width: 100vw;
+  line-height: 0;
+}
+
+.App{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nav{
+  width: 25%;
+  display: flex;
+  justify-content: space-evenly;
+  margin: 1%;
+}
